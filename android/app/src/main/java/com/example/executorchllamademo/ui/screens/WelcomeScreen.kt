@@ -13,6 +13,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
@@ -27,6 +28,7 @@ fun WelcomeScreen(
     onAppSettingsClick: () -> Unit = {},
     onScannerClick: () -> Unit = {},
     onSmsClick: () -> Unit = {},
+    onMalwareClick: () -> Unit = {},
     onAdvisorClick: () -> Unit = {},
     modelReady: Boolean = false
 ) {
@@ -87,9 +89,21 @@ fun WelcomeScreen(
                 Icon(Icons.Default.ArrowForward, null)
             }
         }
+        OutlinedCard(onClick = onMalwareClick, shape = RoundedCornerShape(14.dp), modifier = Modifier.testTag("home_malware_scan")) {
+            Row(Modifier.fillMaxWidth().padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+                Icon(Icons.Default.Android, null, tint = MaterialTheme.colorScheme.primary)
+                Spacer(Modifier.width(14.dp))
+                Column(Modifier.weight(1f)) {
+                    Text("Malware scan", style = MaterialTheme.typography.titleSmall)
+                    Text("Inspect an APK locally", style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+                Icon(Icons.Default.ArrowForward, null)
+            }
+        }
         Text("In development", style = MaterialTheme.typography.labelLarge,
             color = MaterialTheme.colorScheme.onSurfaceVariant)
-        listOf("Network monitor", "Malware analysis").forEach { name ->
+        listOf("Network monitor").forEach { name ->
             Row(Modifier.fillMaxWidth().padding(vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
                 Text(name, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant)

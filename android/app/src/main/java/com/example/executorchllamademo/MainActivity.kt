@@ -58,6 +58,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.executorchllamademo.ui.screens.ChatScreen
 import com.example.executorchllamademo.ui.screens.WelcomeScreen
 import com.example.executorchllamademo.ui.screens.SmsScanScreen
+import com.example.executorchllamademo.ui.screens.MalwareScanScreen
 import com.example.executorchllamademo.ui.components.UrlScanPanel
 import com.example.executorchllamademo.ui.theme.LlamaDemoTheme
 import com.example.executorchllamademo.ui.viewmodel.ChatViewModel
@@ -104,7 +105,7 @@ class MainActivity : ComponentActivity() {
                     val viewModel: ChatViewModel = viewModel()
                     chatViewModel = viewModel
                     var screen by remember { mutableStateOf(intent.getStringExtra("screen") ?: "advisor") }
-                    BackHandler(enabled = screen == "sms") { screen = "home" }
+                    BackHandler(enabled = screen == "sms" || screen == "malware") { screen = "home" }
                     val keyboardVisible = WindowInsets.ime.getBottom(LocalDensity.current) > 0
                     Scaffold(
                         contentWindowInsets = WindowInsets.systemBars,
@@ -136,6 +137,7 @@ class MainActivity : ComponentActivity() {
                             modelReady = viewModel.isModelReady,
                             onScannerClick = { screen = "scanner" },
                             onSmsClick = { screen = "sms" },
+                            onMalwareClick = { screen = "malware" },
                             onAdvisorClick = { screen = "advisor" },
                             onLoadModelClick = { startActivity(Intent(this@MainActivity, ModelSettingsActivity::class.java)) },
                             onDownloadModelClick = { startActivity(Intent(this@MainActivity, SelectPresetModelActivity::class.java)) },
@@ -143,6 +145,8 @@ class MainActivity : ComponentActivity() {
                         )
                     } else if (screen == "sms") {
                         SmsScanScreen(onBack = { screen = "home" })
+                    } else if (screen == "malware") {
+                        MalwareScanScreen(onBack = { screen = "home" })
                     } else if (screen == "scanner") {
                         Scaffold(contentWindowInsets = WindowInsets(0, 0, 0, 0),
                             topBar = { Text("Scan a link", style = androidx.compose.material3.MaterialTheme.typography.headlineSmall,

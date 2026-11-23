@@ -11,6 +11,7 @@ class FocusedUiStateTest {
         assertFalse(isPrimaryDestinationSelected("sms", "scanner"))
         assertFalse(isPrimaryDestinationSelected("sms", "advisor"))
         assertTrue(isPrimaryDestinationSelected("home", "home"))
+        listOf("home", "scanner", "advisor").forEach { assertFalse(isPrimaryDestinationSelected("malware", it)) }
     }
 
     @Test fun readyModelStatusRemovesSetupInstructionAndOldLoadStatuses() {
