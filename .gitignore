@@ -1,0 +1,76 @@
+# Android Studio / Gradle local state
+**/.gradle/
+**/.kotlin/
+**/build/
+**/local.properties
+**/.idea/
+**/*.iml
+**/.externalNativeBuild/
+**/.cxx/
+captures/
+*.apk
+*.aab
+*.apks
+
+# Local SDK, signing, secrets, and credentials
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+*.mobileprovision
+**/keystore.properties
+**/signing.properties
+.env
+.env.*
+!.env.example
+credentials*.json
+secrets.*
+credentials/
+secrets/
+**/.secrets/
+*.credentials
+*.token
+google-services.json
+
+# Python environments, caches, and generated experiment output
+**/.venv/
+**/.venv*/
+**/venv/
+**/env/
+**/__pycache__/
+*.py[cod]
+ml/**/runs/
+ml/**/run-*/
+ml/**/outputs/
+ml/**/banking_analysis*/
+
+# Dataset and private/raw evidence files
+data/raw/
+data/private/
+*.csv
+*.tsv
+*.jsonl
+*.log
+*.pcap
+*.har
+
+# Model weights and derived model artifacts. Add a reviewed exact-path
+# exception only after provenance and redistribution review.
+*.pte
+*.gguf
+*.safetensors
+*.onnx
+*.tflite
+*.ckpt
+*.pb
+*.bin
+*.pt
+*.pth
+*.pkl
+*.pickle
+*.joblib
+*.bin.gz
+*.model
+tokenizer.*

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Don\u0027tClik</string>
+    <string name="app_settings_title">Don\u0027tClik Settings</string>
+    <string name="app_privacy_local_text">Text stays on this device. Don\u0027tClik does not read your inbox or save the message.</string>
+    <string name="demo_pref_file_key">DemoPrefFileKey</string>
+    <string name="saved_messages_json_key">SavedMessagesJsonKey</string>
+    <string name="settings_json_key">SettingsJsonKey</string>
+    <string name="logs_json_key">LogsJsonKey</string>
+</resources>
